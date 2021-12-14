@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+        function computerPlay() {
+            //let first_equp = "rock";
+            //let second_equp = "paper";
+            //let third_equp = "scissors";
+            let randomNum = Math.floor(Math.random() * 3)
+
+            if (randomNum == 0) {
+                return "Rock"
+            }
+            else if (randomNum == 1) {
+                return "Paper"
+            }
+            else {
+                return "Scissors"
+            }
+            
+            
+        }
+
+        function playRound(playerSelection, computerSelection) {
+            if (playerSelection == "Rock" && computerSelection == "Paper") {
+                return `You lose. ${computerSelection} beats ${playerSelection}.`
+            }
+             else if (playerSelection == "Paper" && computerSelection == "Rock") {
+                return `You win. ${playerSelection} beats ${computerSelection}.`
+            }
+             else if (playerSelection == "Scissors" && computerSelection == "Paper") {
+                return `You win. ${playerSelection} beats ${computerSelection}.`
+            }
+             else if (playerSelection == "Paper" && computerSelection == "Scissors") {
+                return `You lose. ${computerSelection} beats ${playerSelection}.`
+            }
+             else if (playerSelection == "Rock" && computerSelection == "Scissors") {
+                return `You win. ${playerSelection} beats ${computerSelection}.`
+            }
+             else if (playerSelection == "Scissors" && computerSelection == "Rock") {
+                return `You lose. ${computerSelection} beats ${playerSelection}.`
+            } 
+             else {
+                return `Math tied. ${playerSelection} and ${computerSelection} are same.`
+            }
+        }
+
+
+        //const usertyp = prompt("Choose your weapon!")
+        //const playerSelection = titleCase(usertyp) 
+        
+        function titleCase(str) {
+        return str
+        .split(' ')
+        .map((word) => word[0].toUpperCase() + word.slice(1).toLowerCase())
+        .join(' ');
+        }
+
+        //const computerSelection = computerPlay()
+        
+        let playerScore = 0;
+        let computerScore = 0;
+
+
+        function game() {
+
+
+            
+            
+
+            for (let i = 0; i < 5; i++) {
+            // function is called and return value is stored in variable retValue.
+            const usertyp = prompt("Choose your weapon!")
+            const playerSelection = titleCase(usertyp)
+            const computerSelection = computerPlay() 
+            let retValue = playRound(playerSelection, computerSelection);
+
+            // first 6 characters of retValue are compared.
+            if(retValue.slice(0, 6) == 'You lo') {
+                let computerpoints = ++computerScore;
+                console.log(`Ah damn. ${computerSelection} beats ${playerSelection}. Computer score is ${computerpoints}.`);
+            }
+            else if (retValue.slice(0, 6) == 'You wi') 
+            {
+                let humanpoints = ++playerScore;
+                console.log(`Very good. ${playerSelection} beats ${computerSelection}. Your score is ${humanpoints}`);
+            }
+            else {
+                console.log('Math Tied')
+            }
+
+            }
+            // when I use computerpoints and humanpoints here, why doesn't it work? 
+            if (computerScore > playerScore) {
+                console.log("You have lost the match")
+            } else if ( playerScore > computerScore) {
+                console.log("Congrats. You have win the match")
+            } else {
+                console.log("You both get equal points.")
+            }
+            
+        }
+
+        game();
+        
+
+
+        
+    </script>
+</body>
+</html>
